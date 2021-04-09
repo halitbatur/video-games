@@ -79,7 +79,7 @@ const GameCard: React.FC<GameCardProps> = ({
             justifyContent: "center",
           }}
         >
-          9
+          {parseFloat(rating.toString()) / 10}
         </div>
       </div>
     </GameContainer>
