@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 import { GameContainer, MockGameImage } from "./GameCardStyled";
-
+import Scrollbar from "react-scrollbars-custom";
 const { Meta } = Card;
 
 interface GameCardProps {
@@ -32,14 +32,23 @@ const GameCard: React.FC<GameCardProps> = ({
     <GameContainer>
       <MockGameImage />
       <Card
-        style={{ width: "100%", marginTop: "5px", overflowY: "scroll" }}
+        style={{ width: "100%", marginTop: "15px" }}
         hoverable={true}
         loading={loading}
       >
         <Meta title={gameTitle} description={"Release Date" + releaseDate} />
-        <p>{summary}</p>
+        <Scrollbar style={{ height: "90px" }}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perspiciatis, explicabo facere soluta quae sunt incidunt adipisci,
+            corporis eos, porro alias asperiores tenetur voluptates fugiat
+            dolorum impedit nulla magni nisi. Fugit recusandae architecto
+            perspiciatis. Perferendis excepturi, tenetur harum iure nulla
+            laboriosam!
+          </p>
+        </Scrollbar>
       </Card>
-      <div>{rating}</div>
+      <div style={{ width: "5%", textAlign: "center" }}>{rating}</div>
     </GameContainer>
   );
 };
