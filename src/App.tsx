@@ -1,9 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import GameCard from "../src/components/gameCard/GameCard";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <GameCard
+        id={100}
+        rating={9}
+        gameTitle="test"
+        releaseDate={58}
+        summary="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut earum neque recusandae officiis provident quod ut. Dolorum, natus facere!"
+      />
+    </div>
+  );
 }
 
 export default App;
