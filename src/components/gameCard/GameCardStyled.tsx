@@ -7,3 +7,9 @@ export const GameContainer = styled.div`
   background-color: #0e1a2b;
   max-height: 150px;
 `;
+
+export const MockGameImage = styled.div`
+  width: 180px;
+  height: 150px;
+  background-color: #000;
+`;

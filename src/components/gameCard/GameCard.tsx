@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-import { GameContainer } from "./GameCardStyled";
+import { GameContainer, MockGameImage } from "./GameCardStyled";
 
 const { Meta } = Card;
 
@@ -24,14 +24,13 @@ const GameCard: React.FC<GameCardProps> = ({
   React.useState(() => {
     setTimeout(() => {
       setLoading(false);
+      console.log(new Date(1519171200000));
     }, 2000);
   });
 
   return (
     <GameContainer>
-      <div
-        style={{ width: "200px", height: "150px", backgroundColor: "black" }}
-      ></div>
+      <MockGameImage />
       <Card
         style={{ width: "100%", marginTop: "5px", overflowY: "scroll" }}
         hoverable={true}

@@ -7,7 +7,7 @@ function App() {
       <GameCard
         id={100}
         rating={9}
-        gameTitle="test"
+        gameTitle="Gamer Title"
         releaseDate={58}
         summary="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus aut earum neque recusandae officiis provident quod ut. Dolorum, natus facere!"
       />
