@@ -59,7 +59,29 @@ const GameCard: React.FC<GameCardProps> = ({
           </p>
         </Scrollbar>
       </Card>
-      <div style={{ width: "5%", textAlign: "center" }}>{rating}</div>
+      <div
+        style={{
+          width: "150px",
+          textAlign: "center",
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: "#5692e8",
+            borderRadius: "100%",
+            width: "50px",
+            height: "50px",
+            fontSize: "28px",
+            margin: "auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          9
+        </div>
+      </div>
     </GameContainer>
   );
 };
