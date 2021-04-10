@@ -9,6 +9,16 @@ export const FilterBarContainer = styled.div`
     margin-bottom: 5px;
     font-size: 14px;
   }
+
+  input,
+  .ant-select-selector {
+    background-color: ${ColorPalette.inputBackground}!important;
+    color: ${ColorPalette.headingAndLabels}!important;
+  }
+
+  input {
+    margin-bottom: 30px;
+  }
 `;
 
 export const FilterContent = styled.div`
