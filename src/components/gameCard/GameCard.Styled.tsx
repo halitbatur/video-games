@@ -1,25 +1,26 @@
 import styled from "@emotion/styled";
+import { ColorPalette } from "../style";
 
 export const GameContainer = styled.div`
   display: flex;
   color: white;
   column-gap: 20px;
-  background-color: #0e1a2b;
+  background-color: ${ColorPalette.cardBackground};
   max-height: 150px;
   .ant-card-meta-title {
     margin-top: 15px;
-    color: #ffffff;
+    color: ${ColorPalette.headingAndLabels};
     font-size: 20px;
     line-height: 28px;
   }
 
   .ant-card-meta-description {
-    color: #c1d1e8;
+    color: ${ColorPalette.text};
     font-size: 16px;
   }
 
   p {
-    color: #c1d1e8;
+    color: ${ColorPalette.text};
     font-size: 14px;
   }
 `;
@@ -37,7 +38,7 @@ export const ScoreContainer = styled.div`
 `;
 
 export const Score = styled.div`
-  background-color: #5692e8;
+  background-color: ${ColorPalette.buttons};
   border-radius: 100%;
   width: 50px;
   height: 50px;

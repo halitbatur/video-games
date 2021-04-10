@@ -1,11 +1,11 @@
 import React from "react";
-import { Header } from "./FilterBar.Styled";
+import { Header, FilterBarContainer } from "./FilterBar.Styled";
 
 const FilterBar = () => {
   return (
-    <div>
+    <FilterBarContainer>
       <Header>Filter Results</Header>
-    </div>
+    </FilterBarContainer>
   );
 };
 
