@@ -1,6 +1,9 @@
 import React from "react";
+import FilterBar from "../../components/filterBar/FilterBar";
 import GameCard, { GameCardProps } from "../../components/gameCard/GameCard";
 import { GamesContainer } from "./VideoGamesPage.styled";
+import { Row, Col } from "antd";
+import Scrollbar from "react-scrollbars-custom";
 
 const VIDEO_GAMES_API: string =
   "https://public.connectnow.org.uk/applicant-test/.";
@@ -18,18 +21,28 @@ const VideoGamesPage = () => {
   }, []);
 
   return (
-    <div>
-      <GamesContainer>
-        {games?.map((game) => (
-          <GameCard
-            id={game.id}
-            rating={game.rating}
-            name={game.name}
-            first_release_date={game.first_release_date}
-            summary={game.summary}
-          />
-        ))}
-      </GamesContainer>
+    <div style={{ padding: "0 100px" }}>
+      <Row gutter={16}>
+        <Col span={6}>
+          <FilterBar />
+        </Col>
+        <Col span={18}>
+          {" "}
+          <Scrollbar style={{ height: "90vh", margin: "10px 0" }}>
+            <GamesContainer>
+              {games?.map((game) => (
+                <GameCard
+                  id={game.id}
+                  rating={game.rating}
+                  name={game.name}
+                  first_release_date={game.first_release_date}
+                  summary={game.summary}
+                />
+              ))}
+            </GamesContainer>
+          </Scrollbar>
+        </Col>
+      </Row>
     </div>
   );
 };

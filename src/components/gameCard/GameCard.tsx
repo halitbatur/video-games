@@ -35,15 +35,15 @@ const GameCard: React.FC<GameCardProps> = ({
   return (
     <GameContainer>
       <MockGameImage />
-      <Card style={{ width: "100%", marginTop: "15px" }}>
+      <div style={{ width: "100%" }}>
         <Meta
           title={name}
           description={"Release Date: " + GetFormattedDate()}
         />
-        <Scrollbar style={{ height: "90px" }}>
+        <Scrollbar style={{ height: "60px", margin: "10px 0" }}>
           <p>{summary}</p>
         </Scrollbar>
-      </Card>
+      </div>
       <ScoreContainer>
         <Score>{(parseFloat(rating.toString()) / 10).toFixed(1)}</Score>
       </ScoreContainer>

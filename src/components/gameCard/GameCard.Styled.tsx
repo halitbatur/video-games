@@ -6,6 +6,22 @@ export const GameContainer = styled.div`
   column-gap: 20px;
   background-color: #0e1a2b;
   max-height: 150px;
+  .ant-card-meta-title {
+    margin-top: 15px;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .ant-card-meta-description {
+    color: #c1d1e8;
+    font-size: 16px;
+  }
+
+  p {
+    color: #c1d1e8;
+    font-size: 14px;
+  }
 `;
 
 export const MockGameImage = styled.div`
@@ -30,4 +46,6 @@ export const Score = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
 `;
