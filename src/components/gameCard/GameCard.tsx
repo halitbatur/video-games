@@ -1,35 +1,33 @@
 import React from "react";
 import { Card } from "antd";
-import { GameContainer, MockGameImage } from "./GameCardStyled";
+import {
+  GameContainer,
+  MockGameImage,
+  ScoreContainer,
+  Score,
+} from "./GameCard.Styled";
 import Scrollbar from "react-scrollbars-custom";
 const { Meta } = Card;
 
-interface GameCardProps {
+export interface GameCardProps {
   id: number;
-  gameTitle: string;
-  releaseDate: number;
+  name: string;
+  first_release_date: number;
   summary: string;
   rating: number;
 }
 
 const GameCard: React.FC<GameCardProps> = ({
-  gameTitle,
-  releaseDate,
+  name,
+  first_release_date,
   summary,
   rating,
   id,
 }) => {
-  const [loading, setLoading] = React.useState<boolean>(true);
-
-  React.useState(() => {
-    setTimeout(() => {
-      setLoading(false);
-      console.log(new Date(1519171200000));
-    }, 2000);
-  });
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const GetFormattedDate = () => {
-    var todayTime = new Date(releaseDate);
+    var todayTime = new Date(first_release_date);
     var month = todayTime.getMonth() + 1;
     var day = todayTime.getDate();
     var year = todayTime.getFullYear();
@@ -45,43 +43,21 @@ const GameCard: React.FC<GameCardProps> = ({
         loading={loading}
       >
         <Meta
-          title={gameTitle}
+          title={name}
           description={"Release Date: " + GetFormattedDate()}
         />
         <Scrollbar style={{ height: "90px" }}>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis, explicabo facere soluta quae sunt incidunt adipisci,
-            corporis eos, porro alias asperiores tenetur voluptates fugiat
-            dolorum impedit nulla magni nisi. Fugit recusandae architecto
-            perspiciatis. Perferendis excepturi, tenetur harum iure nulla
-            laboriosam!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores
+            animi sunt corporis architecto itaque. Delectus error deserunt
+            dolores eos iusto accusamus optio fuga, quos ipsa quisquam omnis quo
+            sed minima.
           </p>
         </Scrollbar>
       </Card>
-      <div
-        style={{
-          width: "150px",
-          textAlign: "center",
-          display: "flex",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "#5692e8",
-            borderRadius: "100%",
-            width: "50px",
-            height: "50px",
-            fontSize: "28px",
-            margin: "auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {parseFloat(rating.toString()) / 10}
-        </div>
-      </div>
+      <ScoreContainer>
+        <Score>{(parseFloat(rating.toString()) / 10).toFixed(1)}</Score>
+      </ScoreContainer>
     </GameContainer>
   );
 };

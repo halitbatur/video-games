@@ -9,7 +9,7 @@ body {
 
 .App {
   background-image: linear-gradient(#081221, #03080f);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 code {
