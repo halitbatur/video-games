@@ -23,10 +23,10 @@ const VideoGamesPage = () => {
   return (
     <div style={{ padding: "0 100px" }}>
       <Row gutter={16}>
-        <Col span={6}>
+        <Col xs={24} sm={24} md={24} lg={6}>
           <FilterBar />
         </Col>
-        <Col span={18}>
+        <Col xs={24} sm={24} md={24} lg={16}>
           {" "}
           <Scrollbar style={{ height: "90vh", margin: "10px 0" }}>
             <GamesContainer>

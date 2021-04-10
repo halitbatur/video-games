@@ -45,7 +45,7 @@ const GameCard: React.FC<GameCardProps> = ({
         </Scrollbar>
       </div>
       <ScoreContainer>
-        <Score>{(parseFloat(rating.toString()) / 10).toFixed(1)}</Score>
+        <Score>{parseInt(rating.toString()) / 10}</Score>
       </ScoreContainer>
     </GameContainer>
   );
