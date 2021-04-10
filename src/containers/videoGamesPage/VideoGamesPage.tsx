@@ -10,28 +10,31 @@ const VIDEO_GAMES_API: string =
 
 const VideoGamesPage = () => {
   const [games, setGames] = React.useState<GameCardProps[]>();
+  const [filteredGames, setFilteredGames] = React.useState<GameCardProps[]>();
+
+  const fetchData = async () => {
+    const fetchedData = await fetch(VIDEO_GAMES_API);
+    const data = await fetchedData.json();
+    setGames(data);
+    setFilteredGames(data);
+  };
 
   React.useEffect(() => {
-    fetch(VIDEO_GAMES_API)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setGames(data);
-      });
+    fetchData();
   }, []);
 
   return (
     <PageContainer style={{ padding: "0 100px" }}>
       <Row gutter={32}>
         <Col xs={24} sm={24} md={24} lg={6}>
-          <FilterBar />
+          <FilterBar games={games} setFilteredGames={setFilteredGames} />
         </Col>
         <Col xs={24} sm={24} md={24} lg={16}>
-          {" "}
           <Scrollbar style={{ height: "90vh", margin: "10px 0" }}>
             <GamesContainer>
-              {games?.map((game) => (
+              {filteredGames?.map((game) => (
                 <GameCard
+                  key={game.id}
                   id={game.id}
                   rating={game.rating}
                   name={game.name}

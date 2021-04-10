@@ -15,10 +15,10 @@ export const FilterBarContainer = styled.div`
     background-color: ${ColorPalette.inputBackground}!important;
     color: ${ColorPalette.headingAndLabels}!important;
   }
+`;
 
-  input {
-    margin-bottom: 30px;
-  }
+export const IntpuContainer = styled.div`
+  margin-bottom: 30px;
 `;
 
 export const FilterContent = styled.div`
