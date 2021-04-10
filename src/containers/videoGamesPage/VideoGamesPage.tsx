@@ -2,7 +2,7 @@ import React from "react";
 import FilterBar from "../../components/filterBar/FilterBar";
 import GameCard, { GameCardProps } from "../../components/gameCard/GameCard";
 import { GamesContainer, PageContainer } from "./VideoGamesPage.styled";
-import { Row, Col } from "antd";
+import { Row, Col, Spin } from "antd";
 import Scrollbar from "react-scrollbars-custom";
 
 const VIDEO_GAMES_API: string =
@@ -20,30 +20,36 @@ const VideoGamesPage = () => {
   };
 
   React.useEffect(() => {
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 2000);
   }, []);
 
   return (
-    <PageContainer style={{ padding: "0 100px" }}>
+    <PageContainer style={{ padding: "50px 100px 0" }}>
       <Row gutter={32}>
         <Col xs={24} sm={24} md={24} lg={6}>
           <FilterBar games={games} setFilteredGames={setFilteredGames} />
         </Col>
         <Col xs={24} sm={24} md={24} lg={16}>
-          <Scrollbar style={{ height: "90vh", margin: "10px 0" }}>
-            <GamesContainer>
-              {filteredGames?.map((game) => (
-                <GameCard
-                  key={game.id}
-                  id={game.id}
-                  rating={game.rating}
-                  name={game.name}
-                  first_release_date={game.first_release_date}
-                  summary={game.summary}
-                />
-              ))}
-            </GamesContainer>
-          </Scrollbar>
+          {filteredGames ? (
+            <Scrollbar style={{ height: "90vh", margin: "10px 0" }}>
+              <GamesContainer>
+                {filteredGames?.map((game) => (
+                  <GameCard
+                    key={game.id}
+                    id={game.id}
+                    rating={game.rating}
+                    name={game.name}
+                    first_release_date={game.first_release_date}
+                    summary={game.summary}
+                  />
+                ))}
+              </GamesContainer>
+            </Scrollbar>
+          ) : (
+            <Spin size="large" style={{ margin: "auto", display: "block" }} />
+          )}
         </Col>
       </Row>
     </PageContainer>
