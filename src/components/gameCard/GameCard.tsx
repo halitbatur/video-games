@@ -24,8 +24,6 @@ const GameCard: React.FC<GameCardProps> = ({
   rating,
   id,
 }) => {
-  const [loading, setLoading] = React.useState<boolean>(false);
-
   const GetFormattedDate = () => {
     var todayTime = new Date(first_release_date);
     var month = todayTime.getMonth() + 1;
@@ -37,22 +35,13 @@ const GameCard: React.FC<GameCardProps> = ({
   return (
     <GameContainer>
       <MockGameImage />
-      <Card
-        style={{ width: "100%", marginTop: "15px" }}
-        hoverable={true}
-        loading={loading}
-      >
+      <Card style={{ width: "100%", marginTop: "15px" }}>
         <Meta
           title={name}
           description={"Release Date: " + GetFormattedDate()}
         />
         <Scrollbar style={{ height: "90px" }}>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores
-            animi sunt corporis architecto itaque. Delectus error deserunt
-            dolores eos iusto accusamus optio fuga, quos ipsa quisquam omnis quo
-            sed minima.
-          </p>
+          <p>{summary}</p>
         </Scrollbar>
       </Card>
       <ScoreContainer>
