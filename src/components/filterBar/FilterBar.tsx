@@ -42,11 +42,15 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
     setFilteredGames(() => {
       const filteredGames: GameCardProps[] = [...games];
       const filter = inputValue.toLowerCase();
-      return filteredGames.filter((game) => {
-        const gameName = game.name.toLowerCase();
-        const gameRating = game.rating / 10;
-        return gameName.includes(filter) && gameRating > minScore;
-      });
+      return filteredGames
+        .filter((game) => {
+          const gameName = game.name.toLowerCase();
+          const gameRating = game.rating / 10;
+          return gameName.includes(filter) && gameRating > minScore;
+        })
+        .sort((a, b) =>
+          a.rating > b.rating ? -1 : b.rating > a.rating ? 1 : 0
+        );
     });
   };
 
