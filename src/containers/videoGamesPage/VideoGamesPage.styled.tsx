@@ -1,3 +1,7 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div``;
+export const GamesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+`;
