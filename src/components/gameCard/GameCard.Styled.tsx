@@ -8,6 +8,7 @@ export const GameContainer = styled.div`
   background-color: ${ColorPalette.cardBackground};
   max-height: 150px;
   .ant-card-meta-title {
+    font-family: Montserrat;
     margin-top: 15px;
     color: ${ColorPalette.headingAndLabels};
     font-size: 20px;

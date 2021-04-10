@@ -1,7 +1,7 @@
 import React from "react";
 import FilterBar from "../../components/filterBar/FilterBar";
 import GameCard, { GameCardProps } from "../../components/gameCard/GameCard";
-import { GamesContainer } from "./VideoGamesPage.styled";
+import { GamesContainer, PageContainer } from "./VideoGamesPage.styled";
 import { Row, Col } from "antd";
 import Scrollbar from "react-scrollbars-custom";
 
@@ -21,8 +21,8 @@ const VideoGamesPage = () => {
   }, []);
 
   return (
-    <div style={{ padding: "0 100px" }}>
-      <Row gutter={16}>
+    <PageContainer style={{ padding: "0 100px" }}>
+      <Row gutter={32}>
         <Col xs={24} sm={24} md={24} lg={6}>
           <FilterBar />
         </Col>
@@ -43,7 +43,7 @@ const VideoGamesPage = () => {
           </Scrollbar>
         </Col>
       </Row>
-    </div>
+    </PageContainer>
   );
 };
 
