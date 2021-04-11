@@ -41,7 +41,7 @@ interface FilterBarProps {
 const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
   const [filters, setFilters] = React.useState<GameFilters>(defatultFilters);
 
-  const compare = (a, b) => {
+  const compareGames = (a, b) => {
     let firstElement, secondElement;
 
     if (filters.orderBy.type === "first_release_date") {
@@ -76,7 +76,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
           const gameRating = game.rating / 10;
           return gameName.includes(filter) && gameRating > minScore;
         })
-        .sort(compare);
+        .sort(compareGames);
     });
   };
 
@@ -149,7 +149,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
                 width: "100%",
               }}
               dropdownStyle={{
-                color: ColorPalette.headingAndLabels,
+                color: "red",
                 backgroundColor: ColorPalette.inputBackground,
               }}
             >

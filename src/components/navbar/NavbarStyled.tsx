@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ColorPalette } from "../style";
+import { ColorPalette, BreakPoints } from "../style";
 
 export const NavbarContainer = styled.div`
   padding-top: 100px;
@@ -7,6 +7,14 @@ export const NavbarContainer = styled.div`
 
   nav {
     display: flex;
+    @media (max-width: ${BreakPoints.md}) {
+      flex-direction: column;
+      row-gap: 30px;
+    }
+  }
+
+  @media (max-width: ${BreakPoints.md}) {
+    padding-left: 50px;
   }
 
   a {
@@ -20,7 +28,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const LinkContainer = styled.div`
-  positin: relative;
+  position: relative;
 `;
 
 export const Shadow = styled.div`
@@ -30,5 +38,9 @@ export const Shadow = styled.div`
   z-index: 0;
   opacity: 0.3;
   font-size: 58px;
-  top: 55px;
+  bottom: 5px;
+
+  @media (max-width: ${BreakPoints.md}) {
+    opacity: 0.2;
+  }
 `;

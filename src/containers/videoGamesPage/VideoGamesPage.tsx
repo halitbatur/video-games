@@ -26,12 +26,12 @@ const VideoGamesPage = () => {
   }, []);
 
   return (
-    <PageContainer style={{ padding: "50px 100px 0" }}>
+    <PageContainer>
       <Row gutter={32}>
         <Col xs={24} sm={24} md={24} lg={6}>
           <FilterBar games={games} setFilteredGames={setFilteredGames} />
         </Col>
-        <Col xs={24} sm={24} md={24} lg={16}>
+        <Col xs={24} sm={24} md={24} lg={18}>
           {filteredGames ? (
             <Scrollbar style={{ height: "90vh", margin: "10px 0" }}>
               <GamesContainer>
@@ -48,7 +48,10 @@ const VideoGamesPage = () => {
               </GamesContainer>
             </Scrollbar>
           ) : (
-            <Spin size="large" style={{ margin: "auto", display: "block" }} />
+            <Spin
+              size="large"
+              style={{ margin: "30px auto", display: "block" }}
+            />
           )}
         </Col>
       </Row>

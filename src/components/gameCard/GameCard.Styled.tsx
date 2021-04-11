@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
-import { ColorPalette } from "../style";
+import { ColorPalette, BreakPoints } from "../style";
 
 export const GameContainer = styled.div`
-  display: flex;
   color: white;
-  column-gap: 20px;
   background-color: ${ColorPalette.cardBackground};
   max-height: 150px;
 
@@ -14,29 +12,37 @@ export const GameContainer = styled.div`
     color: ${ColorPalette.headingAndLabels};
     font-size: 20px;
     line-height: 28px;
+
+    @media (max-width: ${BreakPoints.sm}) {
+      font-size: 14px;
+    }
   }
 
   .ant-card-meta-description {
     color: ${ColorPalette.text};
     font-size: 16px;
+    @media (max-width: ${BreakPoints.sm}) {
+      font-size: 10px;
+    }
   }
 
   p {
     color: ${ColorPalette.text};
     font-size: 14px;
+    @media (max-width: ${BreakPoints.sm}) {
+      font-size: 8px;
+    }
   }
 `;
 
 export const MockGameImage = styled.div`
-  width: 180px;
-  height: 150px;
   background-color: #000;
 `;
 
 export const ScoreContainer = styled.div`
-  width: 150px;
   text-align: center;
   display: flex;
+  margin: auto;
 `;
 
 export const Score = styled.div`
@@ -44,11 +50,15 @@ export const Score = styled.div`
   border-radius: 100%;
   width: 50px;
   height: 50px;
-  fontsize: 28px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 26px;
   font-weight: bold;
+  @media (max-width: ${BreakPoints.sm}) {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
 `;

@@ -13,9 +13,10 @@ export const FilterBarContainer = styled.div`
 
   input,
   .ant-input,
-  .ant-select-selector {
+  .ant-select-selector,
+  .ant-select-selection {
     background-color: ${ColorPalette.inputBackground}!important;
-    color: ${ColorPalette.headingAndLabels}!important;
+    color: ${ColorPalette.headingAndLabels};
   }
 
   .svg {
