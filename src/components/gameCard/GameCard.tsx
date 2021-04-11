@@ -1,11 +1,6 @@
 import React from "react";
 import { Card, Row, Col, Image } from "antd";
-import {
-  GameContainer,
-  MockGameImage,
-  ScoreContainer,
-  Score,
-} from "./GameCard.Styled";
+import { GameContainer, ScoreContainer, Score } from "./GameCard.Styled";
 import Scrollbar from "react-scrollbars-custom";
 const { Meta } = Card;
 

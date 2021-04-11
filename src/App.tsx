@@ -13,13 +13,13 @@ interface iRoute {
 
 export const ROUTES: iRoute[] = [
   {
-    path: "/",
+    path: "/video-games",
     linkName: "VIDEO GAMES",
     shadow: "VIDEO",
     Component: VideoGamesPage,
   },
   {
-    path: "/contact",
+    path: "/video-games/contact",
     linkName: "CONTACT",
     shadow: "CONTACT",
     Component: ContactPage,
