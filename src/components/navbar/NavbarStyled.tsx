@@ -17,6 +17,10 @@ export const NavbarContainer = styled.div`
     padding-left: 50px;
   }
 
+  @media (max-width: ${BreakPoints.sm}) {
+    padding-left: 0px;
+  }
+
   a {
     margin-left: 30px;
     position: relative;
@@ -24,6 +28,10 @@ export const NavbarContainer = styled.div`
     font-size: 28px;
     font-family: Montserrat;
     z-index: 2;
+    @media (max-width: ${BreakPoints.sm}) {
+      font-size: 22px;
+      margin-left: 20px;
+    }
   }
 `;
 
@@ -42,5 +50,10 @@ export const Shadow = styled.div`
 
   @media (max-width: ${BreakPoints.md}) {
     opacity: 0.2;
+  }
+
+  @media (max-width: ${BreakPoints.sm}) {
+    font-size: 40px;
+    left: 5px;
   }
 `;

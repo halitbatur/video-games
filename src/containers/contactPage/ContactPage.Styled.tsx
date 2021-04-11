@@ -61,6 +61,6 @@ export const FormContainer = styled.div`
   }
 
   @media (max-width: ${BreakPoints.sm}) {
-    width: 80%;
+    width: 90%;
   }
 `;
