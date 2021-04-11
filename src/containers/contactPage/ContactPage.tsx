@@ -27,6 +27,7 @@ const ContactPage = () => {
             display: "flex",
             justifyContent: "space-between",
             marginBottom: "15px",
+            columnGap: "10px",
           }}
         >
           <div>
