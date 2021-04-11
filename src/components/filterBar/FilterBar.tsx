@@ -66,31 +66,35 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
     }
   };
 
-  const applyFilters = (inputValue: string, minScore: number) => {
+  const applyFilters = () => {
     setFilteredGames(() => {
       const filteredGames: GameCardProps[] = [...games];
-      const filter = inputValue.toLowerCase();
+      const filter = filters.contains.toLowerCase();
       return filteredGames
         .filter((game) => {
           const gameName = game.name.toLowerCase();
           const gameRating = game.rating / 10;
-          return gameName.includes(filter) && gameRating > minScore;
+          return gameName.includes(filter) && gameRating > filters.minScore;
         })
         .sort(compareGames);
     });
   };
 
-  const filterByString = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleStringChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setFilters({ ...filters, contains: inputValue });
-    applyFilters(inputValue, filters.minScore);
   };
 
-  const filterByMinScore = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const minScore = e.target.value ? parseInt(e.target.value) : null;
     setFilters({ ...filters, minScore });
-    applyFilters(filters.contains, minScore);
   };
+
+  React.useEffect(() => {
+    if (games) {
+      applyFilters();
+    }
+  }, [filters]);
 
   return (
     <FilterBarContainer>
@@ -102,7 +106,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
             placeholder="Text String"
             bordered={false}
             value={filters?.contains}
-            onChange={filterByString}
+            onChange={handleStringChange}
             className="input"
           />
         </IntpuContainer>
@@ -112,7 +116,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
             placeholder="1 - 10"
             bordered={false}
             value={filters?.minScore}
-            onChange={filterByMinScore}
+            onChange={handleScoreChange}
             className="input"
             type="number"
           />
