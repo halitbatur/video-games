@@ -143,7 +143,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
               )}
             </ArrowContainer>
             <Select
-              defaultValue={filters.orderBy.type}
+              value={filters.orderBy.type}
               onChange={(orderType) =>
                 setFilters({
                   ...filters,
