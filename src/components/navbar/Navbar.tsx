@@ -5,7 +5,7 @@ import { ROUTES } from "../../App";
 
 const Navbar = () => {
   const location = useLocation();
-  console.log(location.pathname);
+
   return (
     <NavbarContainer>
       <nav>

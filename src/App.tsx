@@ -1,16 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import VideoGamesPage from "../src/containers/videoGamesPage/VideoGamesPage";
+import ContactPage from "../src/containers/contactPage/ContactPage";
 import Navbar from "../src/components/navbar/Navbar";
 
-interface Route {
+interface iRoute {
   path: string;
   linkName: string;
   shadow: string;
   Component: () => JSX.Element;
 }
 
-export const ROUTES: Route[] = [
+export const ROUTES: iRoute[] = [
   {
     path: "/",
     linkName: "VIDEO GAMES",
@@ -21,7 +22,7 @@ export const ROUTES: Route[] = [
     path: "/contact",
     linkName: "CONTACT",
     shadow: "CONTACT",
-    Component: VideoGamesPage,
+    Component: ContactPage,
   },
 ];
 

@@ -5,15 +5,21 @@ export const FilterBarContainer = styled.div`
   background-color: ${ColorPalette.cardBackground};
   color: ${ColorPalette.headingAndLabels};
   font-family: Montserrat;
+
   p {
     margin-bottom: 5px;
     font-size: 14px;
   }
 
   input,
+  .ant-input,
   .ant-select-selector {
     background-color: ${ColorPalette.inputBackground}!important;
     color: ${ColorPalette.headingAndLabels}!important;
+  }
+
+  .svg {
+    height: 2em;
   }
 `;
 
@@ -29,4 +35,15 @@ export const FilterContent = styled.div`
 export const Header = styled.header`
   font-size: 20px;
   margin-bottom: 35px;
+`;
+
+export const ArrowContainer = styled.div`
+  background-color: ${ColorPalette.buttons};
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :hover {
+    cursor: pointer;
+  }
 `;

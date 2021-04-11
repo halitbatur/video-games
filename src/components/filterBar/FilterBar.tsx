@@ -4,8 +4,10 @@ import {
   FilterBarContainer,
   FilterContent,
   IntpuContainer,
+  ArrowContainer,
 } from "./FilterBar.Styled";
-import { Input, Select } from "antd";
+import { Input, Select, Button } from "antd";
+import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import { ColorPalette } from "../style";
 import { GameCardProps } from "../gameCard/GameCard";
 
@@ -16,9 +18,18 @@ interface GameFilters {
   minScore: number | null;
   orderBy: {
     type: string;
-    order: string;
+    order: "asc" | "dsc";
   };
 }
+
+const defatultFilters: GameFilters = {
+  contains: "",
+  minScore: null,
+  orderBy: {
+    type: "",
+    order: "asc",
+  },
+};
 
 interface FilterBarProps {
   games: GameCardProps[] | undefined;
@@ -28,16 +39,34 @@ interface FilterBarProps {
 }
 
 const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
-  const [filters, setFilters] = React.useState<GameFilters>({
-    contains: "",
-    minScore: null,
-    orderBy: {
-      type: "",
-      order: "",
-    },
-  });
+  const [filters, setFilters] = React.useState<GameFilters>(defatultFilters);
 
-  const ApplyFilters = (inputValue: string, minScore: number) => {
+  const compare = (a, b) => {
+    let firstElement, secondElement;
+
+    if (filters.orderBy.type === "first_release_date") {
+      firstElement = new Date(a.first_release_date).getTime();
+      secondElement = new Date(b.first_release_date).getTime();
+    } else if (filters.orderBy.type === "name") {
+      firstElement = a.name.toLowerCase();
+      secondElement = b.name.toLowerCase();
+    } else if (filters.orderBy.type === "rating") {
+      firstElement = a.rating;
+      secondElement = b.rating;
+    } else {
+      return;
+    }
+
+    if (firstElement > secondElement) {
+      return filters.orderBy.order === "dsc" ? -1 : 1;
+    } else if (secondElement > firstElement) {
+      return filters.orderBy.order === "dsc" ? 1 : -1;
+    } else {
+      return 0;
+    }
+  };
+
+  const applyFilters = (inputValue: string, minScore: number) => {
     setFilteredGames(() => {
       const filteredGames: GameCardProps[] = [...games];
       const filter = inputValue.toLowerCase();
@@ -47,22 +76,20 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
           const gameRating = game.rating / 10;
           return gameName.includes(filter) && gameRating > minScore;
         })
-        .sort((a, b) =>
-          a.rating > b.rating ? -1 : b.rating > a.rating ? 1 : 0
-        );
+        .sort(compare);
     });
   };
 
   const filterByString = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setFilters({ ...filters, contains: inputValue });
-    ApplyFilters(inputValue, filters.minScore);
+    applyFilters(inputValue, filters.minScore);
   };
 
   const filterByMinScore = (e: React.ChangeEvent<HTMLInputElement>) => {
     const minScore = e.target.value ? parseInt(e.target.value) : null;
     setFilters({ ...filters, minScore });
-    ApplyFilters(filters.contains, minScore);
+    applyFilters(filters.contains, minScore);
   };
 
   return (
@@ -91,21 +118,60 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
           />
         </IntpuContainer>
         <p>Order By</p>
-        <Select
-          defaultValue="score"
-          bordered={false}
-          style={{
-            width: "100%",
-          }}
-          dropdownStyle={{
-            color: ColorPalette.headingAndLabels,
-            backgroundColor: ColorPalette.inputBackground,
-          }}
-        >
-          <Option value="releasedate">Release Date</Option>
-          <Option value="score">Score</Option>
-          <Option value="name">Name</Option>
-        </Select>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex" }}>
+            <ArrowContainer
+              onClick={(e) => {
+                const changeOrderTo =
+                  filters.orderBy.order === "asc" ? "dsc" : "asc";
+                setFilters({
+                  ...filters,
+                  orderBy: { ...filters.orderBy, order: changeOrderTo },
+                });
+              }}
+            >
+              {filters.orderBy.order === "dsc" ? (
+                <ArrowUpOutlined />
+              ) : (
+                <ArrowDownOutlined />
+              )}
+            </ArrowContainer>
+            <Select
+              defaultValue={filters.orderBy.type}
+              onChange={(orderType) =>
+                setFilters({
+                  ...filters,
+                  orderBy: { ...filters.orderBy, type: orderType },
+                })
+              }
+              bordered={false}
+              style={{
+                width: "100%",
+              }}
+              dropdownStyle={{
+                color: ColorPalette.headingAndLabels,
+                backgroundColor: ColorPalette.inputBackground,
+              }}
+            >
+              <Option value="first_release_date">Release Date</Option>
+              <Option value="rating">Score</Option>
+              <Option value="name">Name</Option>
+            </Select>
+          </div>
+          <Button
+            type="primary"
+            style={{
+              alignSelf: "flex-end",
+              marginTop: "10px",
+            }}
+            onClick={(e) => {
+              setFilters(defatultFilters);
+              setFilteredGames(games);
+            }}
+          >
+            Clear
+          </Button>
+        </div>
       </FilterContent>
     </FilterBarContainer>
   );
