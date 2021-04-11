@@ -1,14 +1,13 @@
-import React, { ChangeEventHandler } from "react";
+import React from "react";
 import {
   Header,
   FilterBarContainer,
   FilterContent,
   IntpuContainer,
 } from "./FilterBar.Styled";
-import { Input, InputNumber, Select } from "antd";
+import { Input, Select } from "antd";
 import { ColorPalette } from "../style";
 import { GameCardProps } from "../gameCard/GameCard";
-import { setFlagsFromString } from "v8";
 
 const { Option } = Select;
 
