@@ -87,7 +87,9 @@ const FilterBar: React.FC<FilterBarProps> = ({ games, setFilteredGames }) => {
 
   const handleScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const minScore = e.target.value ? parseInt(e.target.value) : null;
-    setFilters({ ...filters, minScore });
+    if ((minScore <= 10 && minScore >= 1) || !minScore) {
+      setFilters({ ...filters, minScore });
+    }
   };
 
   React.useEffect(() => {
