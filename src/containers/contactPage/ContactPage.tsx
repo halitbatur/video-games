@@ -10,7 +10,7 @@ const { TextArea } = Input;
 
 const ContactPage = () => {
   return (
-    <ContactPageContainer style={{ display: "flex", flexDirection: "column" }}>
+    <ContactPageContainer>
       <GetInTouchContainer>
         <h2>GET IN TOUCH</h2>
         <p>
